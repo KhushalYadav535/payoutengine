@@ -51,7 +51,8 @@ CELERY_BEAT_SCHEDULE = {
 
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 CORS_ALLOWED_ORIGINS = os.environ.get(
-    'CORS_ALLOWED_ORIGINS', 'http://localhost:5173,https://payoutengine.vercel.app'
+    'CORS_ALLOWED_ORIGINS', 
+    'http://localhost:5173,https://payoutengine.vercel.app,https://payoutengine-a55ijwc8i-khushal-yadavs-projects.vercel.app'
 ).split(',')
 
 from corsheaders.defaults import default_headers

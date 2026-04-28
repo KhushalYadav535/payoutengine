@@ -5,7 +5,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-secret-key-change-in-prod')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,payoutengine-67vi.onrender.com,.vercel.app,.onrender.com').split(',')
+ALLOWED_HOSTS = ['*']
+
+# Security settings for Render/Cloud
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = False # Let Render handle SSL
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
@@ -49,7 +53,7 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-CORS_ALLOW_ALL_ORIGINS = DEBUG
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = os.environ.get(
     'CORS_ALLOWED_ORIGINS', 
     'http://localhost:5173,https://payoutengine.vercel.app,https://payoutengine-a55ijwc8i-khushal-yadavs-projects.vercel.app'

@@ -12,3 +12,7 @@ COPY . .
 
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SETTINGS_MODULE=config.settings
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "python manage.py migrate && python manage.py seed_merchants && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT"]
